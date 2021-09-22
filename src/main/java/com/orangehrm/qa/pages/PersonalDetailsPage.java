@@ -80,4 +80,17 @@ public class PersonalDetailsPage extends TestBase {
         return new ReportsToPage();
     }
 
+    public QualificationsPage clickOnQualificationsPageLink(){
+        ArrayList<WebElement> QualificationsLinks = (ArrayList<WebElement>) driver.findElements(By.xpath("//a[contains(text(), 'Qualifications')]"));
+        for(int j=0; j<QualificationsLinks.size(); j++){
+            System.out.println(QualificationsLinks.get(j).getText());
+            String JobText = QualificationsLinks.get(j).getText();
+            if(JobText.equals("Qualifications")){
+                QualificationsLinks.get(j).click();
+                break;
+            }
+        }
+        return new QualificationsPage();
+    }
+
 }
