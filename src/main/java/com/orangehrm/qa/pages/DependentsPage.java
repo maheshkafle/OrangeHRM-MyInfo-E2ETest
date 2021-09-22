@@ -1,4 +1,7 @@
 package com.orangehrm.qa.pages;
 
-public class DependentsPage {
+import com.orangehrm.qa.base.TestBase;
+
+public class DependentsPage extends TestBase {
+
 }
