@@ -23,6 +23,9 @@ public class PersonalDetailsPage extends TestBase {
     @FindBy(xpath = "//a[contains(text(), 'Job')]")
     WebElement JobPageLink;
 
+    @FindBy(xpath = "//a[contains(text(), 'Salary')]")
+    WebElement SalaryPageLink;
+
 
     // Initializing Page Objects using constructor
     public PersonalDetailsPage(){
@@ -53,6 +56,11 @@ public class PersonalDetailsPage extends TestBase {
     public JobPage clickOnJobPageLink(){
         JobPageLink.click();
         return new JobPage();
+    }
+
+    public SalaryPage clickOnSalaryPageLink(){
+        SalaryPageLink.click();
+        return new SalaryPage();
     }
 
 }
