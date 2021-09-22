@@ -6,6 +6,8 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
+import java.util.ArrayList;
+
 public class PersonalDetailsPage extends TestBase {
 
     @FindBy(xpath = "//a[contains(text(), 'Contact Details')]")
@@ -20,8 +22,8 @@ public class PersonalDetailsPage extends TestBase {
     @FindBy(xpath = "//a[contains(text(), 'Immigration')]")
     WebElement ImmigrationPageLink;
 
-    @FindBy(xpath = "//a[contains(text(), 'Job')]")
-    WebElement JobPageLink;
+//    @FindBy(xpath = "//a[contains(text(), 'Job')]")
+//    We JobPageLinks;
 
     @FindBy(xpath = "//a[contains(text(), 'Salary')]")
     WebElement SalaryPageLink;
@@ -56,7 +58,15 @@ public class PersonalDetailsPage extends TestBase {
     }
 
     public JobPage clickOnJobPageLink(){
-        JobPageLink.click();
+        ArrayList<WebElement> JobLinks = (ArrayList<WebElement>) driver.findElements(By.xpath("//a[contains(text(), 'Job')]"));
+        for(int j=0; j<JobLinks.size(); j++){
+            System.out.println(JobLinks.get(j).getText());
+            String JobText = JobLinks.get(j).getText();
+            if(JobText.equals("Job")){
+                JobLinks.get(j).click();
+                break;
+            }
+        }
         return new JobPage();
     }
 
