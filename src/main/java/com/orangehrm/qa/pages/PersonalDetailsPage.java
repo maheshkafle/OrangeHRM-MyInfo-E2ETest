@@ -93,4 +93,17 @@ public class PersonalDetailsPage extends TestBase {
         return new QualificationsPage();
     }
 
+    public MembershipsPage clickOnMembershipsPageLink(){
+        ArrayList<WebElement> MembershipsLinks = (ArrayList<WebElement>) driver.findElements(By.xpath("//a[contains(text(), 'Memberships')]"));
+        for(int j=0; j<MembershipsLinks.size(); j++){
+            System.out.println(MembershipsLinks.get(j).getText());
+            String JobText = MembershipsLinks.get(j).getText();
+            if(JobText.equals("Memberships")){
+                MembershipsLinks.get(j).click();
+                break;
+            }
+        }
+        return new MembershipsPage();
+    }
+
 }
