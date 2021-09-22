@@ -25,7 +25,7 @@ public class DashboardPageTest extends TestBase {
         dashboardPage = loginPage.login(prop.getProperty("username"), prop.getProperty("password"));
     }
 
-    @Test
+    @Test(priority = 1)
     public void testValidateDashboardLogo(){
         Boolean flag = dashboardPage.validateDashboardLogo();
         Assert.assertTrue(flag);
