@@ -1,4 +1,7 @@
 package com.orangehrm.qa.pages;
 
-public class EmergencyContactsPage {
+import com.orangehrm.qa.base.TestBase;
+
+public class EmergencyContactsPage extends TestBase {
+
 }
