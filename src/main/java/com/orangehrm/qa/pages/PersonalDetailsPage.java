@@ -2,6 +2,7 @@ package com.orangehrm.qa.pages;
 
 import com.orangehrm.qa.base.TestBase;
 import com.orangehrm.qa.utils.TestUtil;
+import org.bson.assertions.Assertions;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -52,6 +53,15 @@ public class PersonalDetailsPage extends TestBase {
 
     @FindBy(className = "message")
     WebElement SuccessMessage;
+
+    @FindBy(id = "empPic")
+    WebElement EmployeePic;
+
+    @FindBy(id = "photofile")
+    WebElement browse;
+
+    @FindBy(xpath = "//input[contains(@value,'Upload')]")
+    WebElement uploadBtn;
 
     // Initializing Page Objects using constructor
     public PersonalDetailsPage(){
@@ -158,11 +168,22 @@ public class PersonalDetailsPage extends TestBase {
         TestUtil.selectDropdownValue(MaritalStatus, maritalStatus);
     }
 
-    public boolean isPersonalDetailsEdited() throws InterruptedException {
+    public boolean isPersonalDetailsEdited(){
         System.out.println(SuccessMessage.getText());
         Boolean flag = SuccessMessage.isDisplayed();
         return flag;
     }
 
+    public void uploadEmployeeProfilePic(){
+        EmployeePic.click();
+        String path = prop.getProperty("pathToEmployeePic"); // "src\\main\\resources\\jepg.jpeg"
+        browse.sendKeys(path);
+        uploadBtn.click();
+    }
 
+    public boolean isEmployeePicUploaded(){
+        System.out.println(SuccessMessage.getText());
+        Boolean flag = SuccessMessage.isDisplayed();
+        return flag;
+    }
 }

@@ -40,9 +40,15 @@ public class PersonalDetailsPageTest extends TestBase {
         personalDetailsPage.selectMaritalStatus();
         personalDetailsPage.clickOnEditBtn();
         Boolean flag = personalDetailsPage.isPersonalDetailsEdited();
-        System.out.println("flag");
         Assert.assertTrue(flag);
         Thread.sleep(2000);
+    }
+
+    @Test(priority = 2)
+    public void verifyUploadEmployeeProfilePic(){
+        personalDetailsPage.uploadEmployeeProfilePic();
+        Boolean flag = personalDetailsPage.isEmployeePicUploaded();
+        Assert.assertTrue(flag);
     }
 
     @AfterMethod
