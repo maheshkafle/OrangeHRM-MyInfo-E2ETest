@@ -1,6 +1,7 @@
 package com.orangehrm.qa.pages;
 
 import com.orangehrm.qa.base.TestBase;
+import com.orangehrm.qa.utils.TestUtil;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -22,14 +23,35 @@ public class PersonalDetailsPage extends TestBase {
     @FindBy(xpath = "//a[contains(text(), 'Immigration')]")
     WebElement ImmigrationPageLink;
 
-//    @FindBy(xpath = "//a[contains(text(), 'Job')]")
-//    We JobPageLinks;
-
     @FindBy(xpath = "//a[contains(text(), 'Salary')]")
     WebElement SalaryPageLink;
 
     @FindBy(xpath = "//a[contains(text(), 'Report-to')]")
     WebElement ReportToPageLink;
+
+    @FindBy(id = "btnSave")
+    WebElement editSaveBtn;
+
+    @FindBy(id = "personal_txtEmpFirstName")
+    WebElement FirstName;
+
+    @FindBy(id = "personal_txtEmpMiddleName")
+    WebElement MiddleName;
+
+    @FindBy(id = "personal_txtEmpLastName")
+    WebElement LastName;
+
+    @FindBy(id = "personal_optGender_2")
+    WebElement FemaleRadioBtn;
+
+    @FindBy(id = "personal_txtLicExpDate")
+    WebElement LicenseExpiryDate;
+
+    @FindBy(id = "personal_cmbMarital")
+    WebElement MaritalStatus;
+
+    @FindBy(className = "message")
+    WebElement SuccessMessage;
 
     // Initializing Page Objects using constructor
     public PersonalDetailsPage(){
@@ -105,5 +127,42 @@ public class PersonalDetailsPage extends TestBase {
         }
         return new MembershipsPage();
     }
+
+    public void clickOnEditBtn(){
+        editSaveBtn.click();
+    }
+
+    public void editFirstName(String firstName){
+        TestUtil.doSendKeys(FirstName, firstName);
+    }
+
+    public void editMiddleName(String middleName){
+        TestUtil.doSendKeys(MiddleName, middleName);
+    }
+
+    public void editLastName(String lastName){
+        TestUtil.doSendKeys(LastName, lastName);
+    }
+
+    public void clickGenderRadioBtn(){
+        TestUtil.doClickRadioBtn(FemaleRadioBtn);
+    }
+
+    public void selectLicenseExpiryDate() throws InterruptedException {
+        String licenseExpiryDate = prop.getProperty("licenseExpiryDate");
+        TestUtil.SelectDateFromCalenderCustom(driver, LicenseExpiryDate, licenseExpiryDate);
+    }
+
+    public void selectMaritalStatus() throws InterruptedException {
+        String maritalStatus = prop.getProperty("maritalStatus");
+        TestUtil.selectDropdownValue(MaritalStatus, maritalStatus);
+    }
+
+    public boolean isPersonalDetailsEdited() throws InterruptedException {
+        System.out.println(SuccessMessage.getText());
+        Boolean flag = SuccessMessage.isDisplayed();
+        return flag;
+    }
+
 
 }

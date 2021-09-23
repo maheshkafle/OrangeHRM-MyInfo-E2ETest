@@ -4,6 +4,7 @@ import com.orangehrm.qa.base.TestBase;
 import com.orangehrm.qa.pages.DashboardPage;
 import com.orangehrm.qa.pages.LoginPage;
 import com.orangehrm.qa.pages.PersonalDetailsPage;
+import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
@@ -29,8 +30,19 @@ public class PersonalDetailsPageTest extends TestBase {
     }
 
     @Test(priority = 1)
-    public void verifyNavigateToPersonalDetailsPage(){
-        System.out.println("Test---->");
+    public void verifyEditPersonalDetails() throws InterruptedException {
+        personalDetailsPage.clickOnEditBtn();
+        personalDetailsPage.editFirstName(prop.getProperty("firstName"));
+        personalDetailsPage.editMiddleName(prop.getProperty("middleName"));
+        personalDetailsPage.editLastName(prop.getProperty("lastName"));
+        personalDetailsPage.clickGenderRadioBtn();
+        personalDetailsPage.selectLicenseExpiryDate();
+        personalDetailsPage.selectMaritalStatus();
+        personalDetailsPage.clickOnEditBtn();
+        Boolean flag = personalDetailsPage.isPersonalDetailsEdited();
+        System.out.println("flag");
+        Assert.assertTrue(flag);
+        Thread.sleep(2000);
     }
 
     @AfterMethod
