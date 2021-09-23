@@ -31,11 +31,9 @@ public class SalaryPageTest extends TestBase {
 
     @Test(priority = 1)
     public void verifyNavigateToSalaryPage() throws InterruptedException {
-//        public static void scrollPageDown(WebDriver driver){
         JavascriptExecutor js = ((JavascriptExecutor) driver);
         js.executeScript("window.scrollTo(0, document.body.scrollHeight)");
 
-//        }
         personalDetailsPage.clickOnSalaryPageLink();
         Thread.sleep(3000);
     }
