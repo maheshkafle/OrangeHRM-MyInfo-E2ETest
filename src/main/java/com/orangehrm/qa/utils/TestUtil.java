@@ -22,11 +22,17 @@ public class TestUtil extends TestBase {
     }
 
     public static void selectDropdownValue( WebElement locator, String value) throws InterruptedException {
-
         Select dropdown_option = new Select(locator);
         dropdown_option.selectByValue(value);
-
+        Thread.sleep(3000);
     }
+
+    public static boolean checkSuccessMessage(WebElement locator){
+        System.out.println(locator.getText());
+        Boolean flag = locator.isDisplayed();
+        return flag;
+    }
+
 
     public static void SelectDateFromCalenderCustom(WebDriver driver, WebElement locator, String dateVal) throws InterruptedException {
 
@@ -83,7 +89,6 @@ public class TestUtil extends TestBase {
             if (flag) {
                 break;
             }
-
         }
     }
 }
