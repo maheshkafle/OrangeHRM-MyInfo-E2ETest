@@ -29,6 +29,8 @@ public class EmergencyContactsPage extends TestBase {
     @FindBy(id = "emgcontacts_workPhone")
     WebElement EmgContactsWorkPhone;
 
+    @FindBy(className = "message")
+    WebElement SuccessMessage;
 
     // Initializing Page Objects using constructor
     public EmergencyContactsPage(){
@@ -36,40 +38,36 @@ public class EmergencyContactsPage extends TestBase {
     }
 
     // Actions
-    public void addEmergencyContacts() throws InterruptedException {
+    public void addEmergencyContacts() {
         BtnAddEmgContact.click();
-        Thread.sleep(3000);
     }
 
-    public void addEmgContactsName() throws InterruptedException {
+    public void addEmgContactsName() {
         TestUtil.doSendKeys(EmgContactsName, prop.getProperty("emgContactsName"));
-        Thread.sleep(3000);
     }
 
-    public void addEmgContactsRelationship() throws InterruptedException {
+    public void addEmgContactsRelationship() {
         TestUtil.doSendKeys(EmgContactsRelationship, prop.getProperty("emgContactsRelationship"));
-        Thread.sleep(3000);
     }
 
-    public void addEmgContactsHomePhone() throws InterruptedException {
+    public void addEmgContactsHomePhone() {
         TestUtil.doSendKeys(EmgContactsHomePhone, prop.getProperty("emgContactsHomePhone"));
-        Thread.sleep(3000);
     }
 
-    public void addEmgContactsMobilePhone() throws InterruptedException {
+    public void addEmgContactsMobilePhone() {
         TestUtil.doSendKeys(EmgContactsMobilePhone, prop.getProperty("emgContactsMobilePhone"));
-        Thread.sleep(3000);
     }
 
-    public void addEmgContactsWorkPhone() throws InterruptedException {
+    public void addEmgContactsWorkPhone() {
         TestUtil.doSendKeys(EmgContactsWorkPhone, prop.getProperty("emgContactsWorkPhone"));
-        Thread.sleep(3000);
     }
 
-    public void clickOnSaveBtn() throws InterruptedException {
+    public void clickOnSaveBtn() {
         TestUtil.doClick(BtnSaveEmgContact);
-        Thread.sleep(3000);
     }
 
-
+    public Boolean isEmgCtsDetailsAdded() {
+        Boolean flag = TestUtil.checkSuccessMessage(SuccessMessage);
+        return flag;
+    }
 }

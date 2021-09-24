@@ -5,6 +5,7 @@ import com.orangehrm.qa.pages.DashboardPage;
 import com.orangehrm.qa.pages.EmergencyContactsPage;
 import com.orangehrm.qa.pages.LoginPage;
 import com.orangehrm.qa.pages.PersonalDetailsPage;
+import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
@@ -34,14 +35,18 @@ public class EmergencyContactsPageTest extends TestBase {
 
     @Test(priority = 1)
     public void verifyAddEmergencyContacts() throws InterruptedException {
-        emergencyContactsPage.addEmergencyContacts();
-        emergencyContactsPage.addEmgContactsName();
-        emergencyContactsPage.addEmgContactsRelationship();
-        emergencyContactsPage.addEmgContactsHomePhone();
-        emergencyContactsPage.addEmgContactsMobilePhone();
-        emergencyContactsPage.addEmgContactsWorkPhone();
-        emergencyContactsPage.clickOnSaveBtn();
-        Thread.sleep(3000);
+        for(int i=0; i<2; i++){
+            emergencyContactsPage.addEmergencyContacts();
+            emergencyContactsPage.addEmgContactsName();
+            emergencyContactsPage.addEmgContactsRelationship();
+            emergencyContactsPage.addEmgContactsHomePhone();
+            emergencyContactsPage.addEmgContactsMobilePhone();
+            emergencyContactsPage.addEmgContactsWorkPhone();
+            emergencyContactsPage.clickOnSaveBtn();
+            Boolean flag = emergencyContactsPage.isEmgCtsDetailsAdded();
+            Assert.assertTrue(flag);
+            Thread.sleep(3000);
+        }
     }
 
     @AfterMethod
