@@ -97,7 +97,7 @@ public class ContactDetailsPage extends TestBase {
 
     public boolean isContactDetailsEdited(){
         System.out.println(SuccessMessage.getText());
-        Boolean flag = SuccessMessage.isDisplayed();
+        Boolean flag = TestUtil.checkSuccessMessage(SuccessMessage);
         return flag;
     }
 

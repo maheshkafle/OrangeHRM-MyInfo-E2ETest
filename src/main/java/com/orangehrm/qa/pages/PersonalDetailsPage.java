@@ -170,7 +170,7 @@ public class PersonalDetailsPage extends TestBase {
 
     public boolean isPersonalDetailsEdited(){
         System.out.println(SuccessMessage.getText());
-        Boolean flag = SuccessMessage.isDisplayed();
+        Boolean flag = TestUtil.checkSuccessMessage(SuccessMessage);
         return flag;
     }
 
@@ -183,7 +183,7 @@ public class PersonalDetailsPage extends TestBase {
 
     public boolean isEmployeePicUploaded(){
         System.out.println(SuccessMessage.getText());
-        Boolean flag = SuccessMessage.isDisplayed();
+        Boolean flag = TestUtil.checkSuccessMessage(SuccessMessage);
         return flag;
     }
 }
