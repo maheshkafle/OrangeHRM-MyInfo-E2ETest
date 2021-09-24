@@ -2,6 +2,7 @@ package com.orangehrm.qa.testcases;
 
 import com.orangehrm.qa.base.TestBase;
 import com.orangehrm.qa.pages.DashboardPage;
+import com.orangehrm.qa.pages.EmergencyContactsPage;
 import com.orangehrm.qa.pages.LoginPage;
 import com.orangehrm.qa.pages.PersonalDetailsPage;
 import org.testng.annotations.AfterMethod;
@@ -13,6 +14,7 @@ public class EmergencyContactsPageTest extends TestBase {
     PersonalDetailsPage personalDetailsPage;
     DashboardPage dashboardPage;
     LoginPage loginPage;
+    EmergencyContactsPage emergencyContactsPage;
 
     public EmergencyContactsPageTest(){
         super();
@@ -24,13 +26,22 @@ public class EmergencyContactsPageTest extends TestBase {
         loginPage = new LoginPage();
         dashboardPage = new DashboardPage();
         personalDetailsPage = new PersonalDetailsPage();
+        emergencyContactsPage = new EmergencyContactsPage();
         dashboardPage = loginPage.login(prop.getProperty("username"), prop.getProperty("password"));
         personalDetailsPage = dashboardPage.clickOnPersonalDetailsPageLink();
+        emergencyContactsPage = personalDetailsPage.clickOnEmergencyContactsPageLink();
     }
 
     @Test(priority = 1)
-    public void verifyNavigateToEmergencyContactsPage(){
-        personalDetailsPage.clickOnEmergencyContactsPageLink();
+    public void verifyAddEmergencyContacts() throws InterruptedException {
+        emergencyContactsPage.addEmergencyContacts();
+        emergencyContactsPage.addEmgContactsName();
+        emergencyContactsPage.addEmgContactsRelationship();
+        emergencyContactsPage.addEmgContactsHomePhone();
+        emergencyContactsPage.addEmgContactsMobilePhone();
+        emergencyContactsPage.addEmgContactsWorkPhone();
+        emergencyContactsPage.clickOnSaveBtn();
+        Thread.sleep(3000);
     }
 
     @AfterMethod
