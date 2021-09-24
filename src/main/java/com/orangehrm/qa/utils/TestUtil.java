@@ -17,7 +17,7 @@ public class TestUtil extends TestBase {
         locator.sendKeys(text);
     }
 
-    public static void doClickRadioBtn(WebElement locator){
+    public static void doClick(WebElement locator){
         locator.click();
     }
 

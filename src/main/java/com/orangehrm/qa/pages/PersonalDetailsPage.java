@@ -155,7 +155,7 @@ public class PersonalDetailsPage extends TestBase {
     }
 
     public void clickGenderRadioBtn(){
-        TestUtil.doClickRadioBtn(FemaleRadioBtn);
+        TestUtil.doClick(FemaleRadioBtn);
     }
 
     public void selectLicenseExpiryDate() throws InterruptedException {
