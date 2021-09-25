@@ -43,7 +43,7 @@ public class ContactDetailsPage extends TestBase {
     WebElement EmployeeOtherEmail;
 
     @FindBy(className = "message")
-    WebElement SuccessMessage;
+    WebElement CheckStatusDiv;
 
     // Initializing Page Objects using constructor
     public ContactDetailsPage(){
@@ -96,8 +96,8 @@ public class ContactDetailsPage extends TestBase {
     }
 
     public boolean isContactDetailsEdited(){
-        System.out.println(SuccessMessage.getText());
-        Boolean flag = TestUtil.checkSuccessMessage(SuccessMessage);
+        System.out.println(CheckStatusDiv.getText());
+        Boolean flag = TestUtil.checkStatus(CheckStatusDiv);
         return flag;
     }
 

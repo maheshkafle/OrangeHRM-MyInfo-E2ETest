@@ -52,7 +52,7 @@ public class PersonalDetailsPage extends TestBase {
     WebElement MaritalStatus;
 
     @FindBy(className = "message")
-    WebElement SuccessMessage;
+    WebElement CheckStatusDiv;
 
     @FindBy(id = "empPic")
     WebElement EmployeePic;
@@ -169,8 +169,8 @@ public class PersonalDetailsPage extends TestBase {
     }
 
     public boolean isPersonalDetailsEdited(){
-        System.out.println(SuccessMessage.getText());
-        Boolean flag = TestUtil.checkSuccessMessage(SuccessMessage);
+        System.out.println(CheckStatusDiv.getText());
+        Boolean flag = TestUtil.checkStatus(CheckStatusDiv);
         return flag;
     }
 
@@ -182,8 +182,8 @@ public class PersonalDetailsPage extends TestBase {
     }
 
     public boolean isEmployeePicUploaded(){
-        System.out.println(SuccessMessage.getText());
-        Boolean flag = TestUtil.checkSuccessMessage(SuccessMessage);
+        System.out.println(CheckStatusDiv.getText());
+        Boolean flag = TestUtil.checkStatus(CheckStatusDiv);
         return flag;
     }
 }

@@ -27,7 +27,7 @@ public class TestUtil extends TestBase {
         Thread.sleep(3000);
     }
 
-    public static boolean checkSuccessMessage(WebElement locator){
+    public static boolean checkStatus(WebElement locator){
         System.out.println(locator.getText());
         Boolean flag = locator.isDisplayed();
         return flag;
