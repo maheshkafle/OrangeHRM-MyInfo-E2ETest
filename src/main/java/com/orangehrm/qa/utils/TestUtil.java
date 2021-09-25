@@ -14,6 +14,12 @@ public class TestUtil extends TestBase {
         locator.click();
     }
 
+    public static void uploadAttachment(WebElement btnAdd, WebElement btnUpload, WebElement btnSave, String attachmentPath){
+        btnAdd.click();
+        btnUpload.sendKeys(attachmentPath);
+        btnSave.click();
+    }
+
     public static void selectDropdownValue( WebElement locator, String value) throws InterruptedException {
         Select dropdown_option = new Select(locator);
         dropdown_option.selectByValue(value);

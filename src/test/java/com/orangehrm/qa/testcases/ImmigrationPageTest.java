@@ -63,6 +63,26 @@ public class ImmigrationPageTest extends TestBase {
         }
     }
 
+    @Test(priority = 3)
+    public void verifyUploadAttachRecords() throws InterruptedException {
+        for(int i=0; i<2; i++){
+            immigrationPage.attachImmigrantRecord();
+            Boolean flag = immigrationPage.isImmigrantRecordAttached();
+            Assert.assertTrue(flag);
+            Thread.sleep(3000);
+        }
+    }
+
+    @Test(priority = 4)
+    public void verifyDeleteImmigrantAttachmentRecord() throws InterruptedException {
+        for(int i=0; i<2; i++){
+            immigrationPage.DeleteImmigrantAttachmentRecord();
+            Boolean flag = immigrationPage.isImmigrantAttachmentRecordDeleted();
+            Assert.assertTrue(flag);
+            Thread.sleep(3000);
+        }
+    }
+
     @AfterMethod
     public void tearDown(){
         driver.quit();

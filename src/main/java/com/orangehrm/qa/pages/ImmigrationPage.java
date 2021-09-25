@@ -42,12 +42,28 @@ public class ImmigrationPage extends TestBase {
     @FindBy(className = "message")
     WebElement CheckStatusDiv;
 
-    //Hard coded xpath which contains text fd: So pass accordingly
+    //Hard coded xpath which contains text Visa: So pass accordingly
     @FindBy(xpath = "//a[contains(text(), 'Visa')]/parent::td//preceding-sibling::td//input[@class='checkbox']")
-    WebElement Checkbox;
+    WebElement VisaCheckbox;
+
+    //Hard coded xpath which contains text png.png: So pass accordingly
+    @FindBy(xpath = "//a[contains(text(), 'png.png')]/parent::td//preceding-sibling::td//input[@class='checkboxAtch']")
+    WebElement AttachmentCheckbox;
 
     @FindBy(id = "btnDelete")
     WebElement DelImmigrantBtn;
+
+    @FindBy(id = "btnAddAttachment")
+    WebElement BtnAddAttachment;
+
+    @FindBy(id = "ufile")
+    WebElement BtnUploadAttachment;
+
+    @FindBy(id = "btnSaveAttachment")
+    WebElement BtnSaveAttachment;
+
+    @FindBy(id = "btnDeleteAttachment")
+    WebElement BtnDeleteAttachment;
 
     // Initializing Page Objects using constructor
     public ImmigrationPage(){
@@ -100,7 +116,7 @@ public class ImmigrationPage extends TestBase {
     }
 
     public void deleteImmigrants() {
-        TestUtil.doClick(Checkbox);
+        TestUtil.doClick(VisaCheckbox);
         TestUtil.doClick(DelImmigrantBtn);
     }
 
@@ -108,4 +124,25 @@ public class ImmigrationPage extends TestBase {
         Boolean flag = TestUtil.checkStatus(CheckStatusDiv);
         return flag;
     }
+
+    public void attachImmigrantRecord() {
+        TestUtil.uploadAttachment(BtnAddAttachment, BtnUploadAttachment, BtnSaveAttachment, prop.getProperty("pathToImmigrantRecordAttachment"));
+    }
+
+    public Boolean isImmigrantRecordAttached(){
+        System.out.println(CheckStatusDiv.getText());
+        Boolean flag = TestUtil.checkStatus(CheckStatusDiv);
+        return flag;
+    }
+
+    public void DeleteImmigrantAttachmentRecord() {
+        TestUtil.doClick(AttachmentCheckbox);
+        TestUtil.doClick(BtnDeleteAttachment);
+    }
+
+    public boolean isImmigrantAttachmentRecordDeleted() {
+        Boolean flag = TestUtil.checkStatus(CheckStatusDiv);
+        return flag;
+    }
+
 }
