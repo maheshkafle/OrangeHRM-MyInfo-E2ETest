@@ -53,6 +53,16 @@ public class ImmigrationPageTest extends TestBase {
         }
     }
 
+    @Test(priority = 2)
+    public void verifyDeleteImmigrants() throws InterruptedException {
+        for(int i=0; i<2; i++){
+            immigrationPage.deleteImmigrants();
+            Boolean flag = immigrationPage.isImmigrantsDeleted();
+            Assert.assertTrue(flag);
+            Thread.sleep(3000);
+        }
+    }
+
     @AfterMethod
     public void tearDown(){
         driver.quit();

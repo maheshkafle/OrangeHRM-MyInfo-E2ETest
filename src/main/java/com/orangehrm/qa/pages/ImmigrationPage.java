@@ -42,8 +42,12 @@ public class ImmigrationPage extends TestBase {
     @FindBy(className = "message")
     WebElement CheckStatusDiv;
 
-//    @FindBy(id = "delDependentBtn")
-//    WebElement DelDependentBtn;
+    //Hard coded xpath which contains text fd: So pass accordingly
+    @FindBy(xpath = "//a[contains(text(), 'Visa')]/parent::td//preceding-sibling::td//input[@class='checkbox']")
+    WebElement Checkbox;
+
+    @FindBy(id = "btnDelete")
+    WebElement DelImmigrantBtn;
 
     // Initializing Page Objects using constructor
     public ImmigrationPage(){
@@ -95,13 +99,13 @@ public class ImmigrationPage extends TestBase {
         return flag;
     }
 
-//    public void deleteDependents() {
-//        TestUtil.doClick(Checkbox);
-//        TestUtil.doClick(DelDependentBtn);
-//    }
-//
-//    public boolean isDependentsDeleted() {
-//        Boolean flag = TestUtil.checkStatus(CheckStatusDiv);
-//        return flag;
-//    }
+    public void deleteImmigrants() {
+        TestUtil.doClick(Checkbox);
+        TestUtil.doClick(DelImmigrantBtn);
+    }
+
+    public boolean isImmigrantsDeleted() {
+        Boolean flag = TestUtil.checkStatus(CheckStatusDiv);
+        return flag;
+    }
 }
