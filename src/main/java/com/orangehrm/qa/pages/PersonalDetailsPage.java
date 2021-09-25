@@ -176,7 +176,7 @@ public class PersonalDetailsPage extends TestBase {
 
     public void uploadEmployeeProfilePic(){
         EmployeePic.click();
-        String path = prop.getProperty("pathToEmployeePic"); // "src\\main\\resources\\jepg.jpeg"
+        String path = prop.getProperty("pathToEmployeePic");
         browse.sendKeys(path);
         uploadBtn.click();
     }
