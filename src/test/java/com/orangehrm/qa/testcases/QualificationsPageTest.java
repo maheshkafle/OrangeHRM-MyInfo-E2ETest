@@ -51,13 +51,29 @@ public class QualificationsPageTest extends TestBase {
     }
 
     @Test(priority = 2)
-    public void verifyDeleteImmigrants() throws InterruptedException {
+    public void verifyDeleteWorkExperience() throws InterruptedException {
         for(int i=0; i<2; i++){
             qualificationsPage.deleteWorkExperience();
             Boolean flag = qualificationsPage.isWorkExperienceDeleted();
             Assert.assertTrue(flag);
             Thread.sleep(3000);
         }
+    }
+
+    @Test(priority = 1)
+    public void verifyAddEducation() throws InterruptedException {
+        qualificationsPage.clickAddEducationBtn();
+        qualificationsPage.selectEducationLevel(prop.getProperty("valueEducationLevel"));
+        qualificationsPage.AddEducationInstitute(prop.getProperty("valueEducationInstitute"));
+        qualificationsPage.AddEducationSpecialization(prop.getProperty("valueEducationSpecialization"));
+        qualificationsPage.AddEducationYear(prop.getProperty("valueEducationYear"));
+        qualificationsPage.AddEducationGPA(prop.getProperty("valueEducationGPA"));
+        qualificationsPage.AddEducationStartDate(prop.getProperty("valueEducationStartDate"));
+        qualificationsPage.AddEducationEndDate(prop.getProperty("valueEducationEndDate"));
+        qualificationsPage.clickSaveEducationBtn();
+        Boolean flag = qualificationsPage.isEducationAdded();
+        Assert.assertTrue(flag);
+        Thread.sleep(3000);
     }
 
     @AfterMethod

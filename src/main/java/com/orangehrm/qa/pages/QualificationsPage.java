@@ -12,6 +12,9 @@ public class QualificationsPage extends TestBase {
     @FindBy(id = "addWorkExperience")
     WebElement BtnAddWorkExperience;
 
+    @FindBy(id = "addEducation")
+    WebElement BtnAddEducation;
+
     @FindBy(id = "btnWorkExpSave")
     WebElement BtnSaveWorkExperience;
 
@@ -39,6 +42,30 @@ public class QualificationsPage extends TestBase {
 
     @FindBy(id = "delWorkExperience")
     WebElement BtndelWorkExperience;
+
+    @FindBy(id = "education_code")
+    WebElement EducationLevel;
+
+    @FindBy(id = "education_institute")
+    WebElement EducationInstitute;
+
+    @FindBy(id = "education_major")
+    WebElement EducationSpecialization;
+
+    @FindBy(id = "education_year")
+    WebElement EducationYear;
+
+    @FindBy(id = "education_gpa")
+    WebElement EducationGPA;
+
+    @FindBy(id = "education_start_date")
+    WebElement EducationStartDate;
+
+    @FindBy(id = "education_end_date")
+    WebElement EducationEndDate;
+
+    @FindBy(id = "btnEducationSave")
+    WebElement BtnEducationSave;
 
     // Initializing Page Objects using constructor
     public QualificationsPage(){
@@ -89,4 +116,45 @@ public class QualificationsPage extends TestBase {
         return flag;
     }
 
+    public void clickAddEducationBtn(){
+        TestUtil.doClick(BtnAddEducation);
+    }
+
+    public void selectEducationLevel(String valueEducationLevel) throws InterruptedException {
+        TestUtil.selectDropdownValue(EducationLevel, valueEducationLevel);
+    }
+
+    public void AddEducationInstitute(String valueEducationInstitute) throws InterruptedException {
+        TestUtil.doSendKeys(EducationInstitute, valueEducationInstitute);
+    }
+
+    public void AddEducationSpecialization(String valueEducationSpecialization) throws InterruptedException {
+        TestUtil.doSendKeys(EducationSpecialization, valueEducationSpecialization);
+    }
+
+    public void AddEducationYear(String valueEducationYear) throws InterruptedException {
+        TestUtil.doSendKeys(EducationYear, valueEducationYear);
+    }
+
+    public void AddEducationGPA(String valueEducationGPA) throws InterruptedException {
+        TestUtil.doSendKeys(EducationGPA, valueEducationGPA);
+    }
+
+    public void AddEducationStartDate(String valueEducationStartDate) throws InterruptedException {
+        TestUtil.SelectDateFromCalenderCustom(driver, EducationStartDate, valueEducationStartDate);
+    }
+
+    public void AddEducationEndDate(String valueEducationEndDate) throws InterruptedException {
+        TestUtil.SelectDateFromCalenderCustom(driver, EducationEndDate, valueEducationEndDate);
+    }
+
+    public void clickSaveEducationBtn(){
+        TestUtil.doClick(BtnEducationSave);
+    }
+
+    public boolean isEducationAdded(){
+        System.out.println(CheckStatusDiv.getText());
+        Boolean flag = TestUtil.checkStatus(CheckStatusDiv);
+        return flag;
+    }
 }
