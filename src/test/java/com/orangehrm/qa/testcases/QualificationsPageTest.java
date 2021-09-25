@@ -60,7 +60,7 @@ public class QualificationsPageTest extends TestBase {
         }
     }
 
-    @Test(priority = 1)
+    @Test(priority = 3)
     public void verifyAddEducation() throws InterruptedException {
         qualificationsPage.clickAddEducationBtn();
         qualificationsPage.selectEducationLevel(prop.getProperty("valueEducationLevel"));
@@ -72,6 +72,18 @@ public class QualificationsPageTest extends TestBase {
         qualificationsPage.AddEducationEndDate(prop.getProperty("valueEducationEndDate"));
         qualificationsPage.clickSaveEducationBtn();
         Boolean flag = qualificationsPage.isEducationAdded();
+        Assert.assertTrue(flag);
+        Thread.sleep(3000);
+    }
+
+    @Test(priority = 4)
+    public void verifyAddSkills() throws InterruptedException {
+        qualificationsPage.clickAddSkillBtn();
+        qualificationsPage.selectSkill(prop.getProperty("valueSkill"));
+        qualificationsPage.AddYearsOfExperience(prop.getProperty("valueYearsOfExperience"));
+        qualificationsPage.AddSkillComments(prop.getProperty("valueSkillComments"));
+        qualificationsPage.clickBtnSkillSave();
+        Boolean flag = qualificationsPage.isSkillAdded();
         Assert.assertTrue(flag);
         Thread.sleep(3000);
     }

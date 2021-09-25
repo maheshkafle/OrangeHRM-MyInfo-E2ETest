@@ -15,6 +15,9 @@ public class QualificationsPage extends TestBase {
     @FindBy(id = "addEducation")
     WebElement BtnAddEducation;
 
+    @FindBy(id = "addSkill")
+    WebElement BtnAddSkill;
+
     @FindBy(id = "btnWorkExpSave")
     WebElement BtnSaveWorkExperience;
 
@@ -66,6 +69,18 @@ public class QualificationsPage extends TestBase {
 
     @FindBy(id = "btnEducationSave")
     WebElement BtnEducationSave;
+
+    @FindBy(id = "skill_code")
+    WebElement Skill;
+
+    @FindBy(id = "skill_years_of_exp")
+    WebElement YearsOfExperience;
+
+    @FindBy(id = "skill_comments")
+    WebElement SkillComments;
+
+    @FindBy(id = "btnSkillSave")
+    WebElement BtnSkillSave;
 
     // Initializing Page Objects using constructor
     public QualificationsPage(){
@@ -157,4 +172,31 @@ public class QualificationsPage extends TestBase {
         Boolean flag = TestUtil.checkStatus(CheckStatusDiv);
         return flag;
     }
+
+    public void clickAddSkillBtn(){
+        TestUtil.doClick(BtnAddSkill);
+    }
+
+    public void selectSkill(String valueSkill) throws InterruptedException {
+        TestUtil.selectDropdownValue(Skill, valueSkill);
+    }
+
+    public void AddYearsOfExperience(String valueYearsOfExperience) throws InterruptedException {
+        TestUtil.doSendKeys(YearsOfExperience, valueYearsOfExperience);
+    }
+
+    public void AddSkillComments(String valueSkillComments) throws InterruptedException {
+        TestUtil.doSendKeys(SkillComments, valueSkillComments);
+    }
+
+    public void clickBtnSkillSave(){
+        TestUtil.doClick(BtnSkillSave);
+    }
+
+    public boolean isSkillAdded(){
+        System.out.println(CheckStatusDiv.getText());
+        Boolean flag = TestUtil.checkStatus(CheckStatusDiv);
+        return flag;
+    }
+
 }
