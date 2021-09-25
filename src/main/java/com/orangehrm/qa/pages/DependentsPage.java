@@ -31,6 +31,13 @@ public class DependentsPage extends TestBase {
     @FindBy(className = "message")
     WebElement CheckStatusDiv;
 
+    //Hard coded xpath which contains text fd: So pass accordingly
+    @FindBy(xpath = "//a[contains(text(), 'Paurub Gandey')]/parent::td//preceding-sibling::td//input[@class='checkbox']")
+    WebElement Checkbox;
+
+    @FindBy(id = "delDependentBtn")
+    WebElement DelDependentBtn;
+
     // Initializing Page Objects using constructor
     public DependentsPage(){
         PageFactory.initElements(driver, this);
@@ -59,6 +66,15 @@ public class DependentsPage extends TestBase {
 
     public boolean isDependentsAdded(){
         System.out.println(CheckStatusDiv.getText());
+        Boolean flag = TestUtil.checkStatus(CheckStatusDiv);
+        return flag;
+    }
+    public void deleteDependents() {
+        TestUtil.doClick(Checkbox);
+        TestUtil.doClick(DelDependentBtn);
+    }
+
+    public boolean isDependentsDeleted() {
         Boolean flag = TestUtil.checkStatus(CheckStatusDiv);
         return flag;
     }

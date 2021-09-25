@@ -47,6 +47,16 @@ public class DependentsPageTest extends TestBase {
         }
     }
 
+    @Test(priority = 2)
+    public void verifyDeleteDependents() throws InterruptedException {
+        for(int i=0; i<2; i++){
+            dependentsPage.deleteDependents();
+            Boolean flag = dependentsPage.isDependentsDeleted();
+            Assert.assertTrue(flag);
+            Thread.sleep(3000);
+        }
+    }
+
     @AfterMethod
     public void tearDown(){
         driver.quit();
