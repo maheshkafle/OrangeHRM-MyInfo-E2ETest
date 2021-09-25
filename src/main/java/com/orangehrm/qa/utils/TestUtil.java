@@ -3,13 +3,6 @@ package com.orangehrm.qa.utils;
 import com.orangehrm.qa.base.TestBase;
 import org.openqa.selenium.*;
 import org.openqa.selenium.support.ui.Select;
-
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Properties;
-
 public class TestUtil extends TestBase {
 
     public static void doSendKeys(WebElement locator, String text){
@@ -41,8 +34,8 @@ public class TestUtil extends TestBase {
         String month = dateArr[1];
         String day = dateArr[2];
 
-        WebElement input = driver.findElement(By.id("personal_txtLicExpDate"));
-        input.click();
+        //WebElement input = driver.findElement(By.id("personal_txtLicExpDate"));
+        locator.click();
         Select select1 = new Select(driver.findElement(By.className("ui-datepicker-month")));
         select1.selectByVisibleText(month);
         Thread.sleep(2000);
