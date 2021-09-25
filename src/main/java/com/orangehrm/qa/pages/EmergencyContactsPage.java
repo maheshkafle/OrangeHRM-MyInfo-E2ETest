@@ -30,7 +30,14 @@ public class EmergencyContactsPage extends TestBase {
     WebElement EmgContactsWorkPhone;
 
     @FindBy(className = "message")
-    WebElement SuccessMessage;
+    WebElement CheckStatusDiv;
+
+    //Hard coded xpath which contains text fd: So pass accordingly
+    @FindBy(xpath = "//a[contains(text(), 'Preeyan Soudyal')]/parent::td//preceding-sibling::td//input[@class='checkbox']")
+    WebElement Checkbox;
+
+    @FindBy(id = "delContactsBtn")
+    WebElement DelContactsBtn;
 
     // Initializing Page Objects using constructor
     public EmergencyContactsPage(){
@@ -67,7 +74,17 @@ public class EmergencyContactsPage extends TestBase {
     }
 
     public Boolean isEmgCtsDetailsAdded() {
-        Boolean flag = TestUtil.checkSuccessMessage(SuccessMessage);
+        Boolean flag = TestUtil.checkStatus(CheckStatusDiv);
+        return flag;
+    }
+
+    public void deleteEmergencyContacts() {
+        TestUtil.doClick(Checkbox);
+        TestUtil.doClick(DelContactsBtn);
+    }
+
+    public boolean isEmgCtsDetailsDeleted() {
+        Boolean flag = TestUtil.checkStatus(CheckStatusDiv);
         return flag;
     }
 }
