@@ -2,8 +2,11 @@ package com.orangehrm.qa.testcases;
 
 import com.orangehrm.qa.base.TestBase;
 import com.orangehrm.qa.pages.DashboardPage;
+import com.orangehrm.qa.pages.ImmigrationPage;
 import com.orangehrm.qa.pages.LoginPage;
 import com.orangehrm.qa.pages.PersonalDetailsPage;
+import org.apache.poi.ss.formula.functions.T;
+import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
@@ -13,6 +16,7 @@ public class ImmigrationPageTest extends TestBase {
     PersonalDetailsPage personalDetailsPage;
     DashboardPage dashboardPage;
     LoginPage loginPage;
+    ImmigrationPage immigrationPage;
 
     public ImmigrationPageTest(){
         super();
@@ -24,14 +28,29 @@ public class ImmigrationPageTest extends TestBase {
         loginPage = new LoginPage();
         dashboardPage = new DashboardPage();
         personalDetailsPage = new PersonalDetailsPage();
+        immigrationPage = new ImmigrationPage();
         dashboardPage = loginPage.login(prop.getProperty("username"), prop.getProperty("password"));
         personalDetailsPage = dashboardPage.clickOnPersonalDetailsPageLink();
+        immigrationPage = personalDetailsPage.clickOnImmigrationPageLink();
     }
 
     @Test(priority = 1)
-    public void verifyNavigateToImmigrationPage() throws InterruptedException {
-        personalDetailsPage.clickOnImmigrationPageLink();
-        Thread.sleep(3000);
+    public void verifyAddImmigrationDetails() throws InterruptedException {
+        for (int i=0; i<2; i++){
+            immigrationPage.clickAddImmigrantBtn();
+            immigrationPage.clickDocumentCheckbox();
+            immigrationPage.AddImmigrationNumber(prop.getProperty("immigrationNumber"));
+            immigrationPage.AddPassportIssueDate(prop.getProperty("passportIssueDate"));
+            immigrationPage.AddPassportExpireDate(prop.getProperty("passportExpireDate"));
+            immigrationPage.AddImmigrationStatus(prop.getProperty("immigrationStatus"));
+            immigrationPage.AddIssuedBy(prop.getProperty("issuedBy"));
+            immigrationPage.AddPassportReviewDate(prop.getProperty("reviewDate"));
+            immigrationPage.AddComments(prop.getProperty("comments"));
+            immigrationPage.clickSaveImmigrantBtn();
+            Boolean flag = immigrationPage.isImmigrantsAdded();
+            Assert.assertTrue(flag);
+            Thread.sleep(3000);
+        }
     }
 
     @AfterMethod
