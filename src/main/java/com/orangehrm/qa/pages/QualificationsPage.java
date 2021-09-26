@@ -21,6 +21,9 @@ public class QualificationsPage extends TestBase {
     @FindBy(id = "btnWorkExpSave")
     WebElement BtnSaveWorkExperience;
 
+    @FindBy(id = "addLanguage")
+    WebElement BtnAddLanguage;
+
     @FindBy(id = "experience_employer")
     WebElement Company;
 
@@ -81,6 +84,21 @@ public class QualificationsPage extends TestBase {
 
     @FindBy(id = "btnSkillSave")
     WebElement BtnSkillSave;
+
+    @FindBy(id = "language_code")
+    WebElement Language;
+
+    @FindBy(id = "language_lang_type")
+    WebElement LanguageType;
+
+    @FindBy(id = "language_competency")
+    WebElement LanguageCompetency;
+
+    @FindBy(id = "language_comments")
+    WebElement LanguageComments;
+
+    @FindBy(id = "btnLanguageSave")
+    WebElement BtnLanguageSave;
 
     // Initializing Page Objects using constructor
     public QualificationsPage(){
@@ -194,6 +212,36 @@ public class QualificationsPage extends TestBase {
     }
 
     public boolean isSkillAdded(){
+        System.out.println(CheckStatusDiv.getText());
+        Boolean flag = TestUtil.checkStatus(CheckStatusDiv);
+        return flag;
+    }
+
+    public void clickAddLanguageBtn(){
+        TestUtil.doClick(BtnAddLanguage);
+    }
+
+    public void selectLanguage(String valueLanguage) throws InterruptedException {
+        TestUtil.selectDropdownValue(Language, valueLanguage);
+    }
+
+    public void selectLanguageType(String valueLanguageType) throws InterruptedException {
+        TestUtil.selectDropdownValue(LanguageType, valueLanguageType);
+    }
+
+    public void selectLanguageCompetency(String valueLanguageCompetency) throws InterruptedException {
+        TestUtil.selectDropdownValue(LanguageCompetency, valueLanguageCompetency);
+    }
+
+    public void AddLanguageComments(String valueLanguageComments) throws InterruptedException {
+        TestUtil.doSendKeys(LanguageComments, valueLanguageComments);
+    }
+
+    public void clickBtnLanguageSave(){
+        TestUtil.doClick(BtnLanguageSave);
+    }
+
+    public boolean isLanguageAdded(){
         System.out.println(CheckStatusDiv.getText());
         Boolean flag = TestUtil.checkStatus(CheckStatusDiv);
         return flag;

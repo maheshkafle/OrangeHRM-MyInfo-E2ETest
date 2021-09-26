@@ -88,6 +88,19 @@ public class QualificationsPageTest extends TestBase {
         Thread.sleep(3000);
     }
 
+    @Test(priority = 5)
+    public void verifyAddLanguages() throws InterruptedException {
+        qualificationsPage.clickAddLanguageBtn();
+        qualificationsPage.selectLanguage(prop.getProperty("valueLanguage"));
+        qualificationsPage.selectLanguageType(prop.getProperty("valueLanguageType"));
+        qualificationsPage.selectLanguageCompetency(prop.getProperty("valueLanguageCompetency"));
+        qualificationsPage.AddLanguageComments(prop.getProperty("valueLanguageComments"));
+        qualificationsPage.clickBtnLanguageSave();
+        Boolean flag = qualificationsPage.isLanguageAdded();
+        Assert.assertTrue(flag);
+        Thread.sleep(3000);
+    }
+
     @AfterMethod
     public void tearDown(){
         driver.quit();
