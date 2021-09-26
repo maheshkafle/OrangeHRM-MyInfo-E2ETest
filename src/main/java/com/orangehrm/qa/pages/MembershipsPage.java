@@ -44,6 +44,13 @@ public class MembershipsPage extends TestBase {
     @FindBy(id = "btnSaveAttachment")
     WebElement BtnSaveAttachment;
 
+    //Hard coded xpath which contains text British Computer Society (BCS): So pass accordingly
+    @FindBy(xpath = "//a[contains(text(), \"British Computer Society (BCS)\")]/parent::td//preceding-sibling::td//input[@class='checkboxMem']")
+    WebElement MembershipCheckbox;
+
+    @FindBy(id = "delMemsBtn")
+    WebElement BtnDelMembership;
+
     // Initializing Page Objects using constructor
     public MembershipsPage(){
         PageFactory.initElements(driver, this);
@@ -93,6 +100,16 @@ public class MembershipsPage extends TestBase {
 
     public boolean IsMembershipAttachUploaded(){
         System.out.println(CheckStatusDiv.getText());
+        Boolean flag = TestUtil.checkStatus(CheckStatusDiv);
+        return flag;
+    }
+
+    public void DeleteMembershipDetails() {
+        TestUtil.doClick(MembershipCheckbox);
+        TestUtil.doClick(BtnDelMembership);
+    }
+
+    public boolean IsMembershipDetailsDeleted() {
         Boolean flag = TestUtil.checkStatus(CheckStatusDiv);
         return flag;
     }

@@ -40,22 +40,29 @@ public class MembershipsPageTest extends TestBase {
 
     @Test(priority = 1)
     public void verifyAddMembershipDetails() throws InterruptedException {
-        for(int i=0; i<2; i++){
-            membershipsPage.ClickBtnAddMembershipDetail();
-            membershipsPage.AddMembership(prop.getProperty("valueMembership"));
-            membershipsPage.AddSubscriptionPaidBy(prop.getProperty("valueSubscriptionPaidBy"));
-            membershipsPage.AddSubscriptionAmount(prop.getProperty("valueSubscriptionAmount"));
-            membershipsPage.AddMembershipCurrency(prop.getProperty("valueMembershipCurrency"));
-            membershipsPage.AddSubscriptionCommenceDate(prop.getProperty("valueSubscriptionCommenceDate"));
-            membershipsPage.AddSubscriptionRenewalDate(prop.getProperty("valueSubscriptionRenewalDate"));
-            membershipsPage.ClickOnBtnSaveMembership();
-            boolean flag = membershipsPage.IsMembershipsAdded();
-            Assert.assertTrue(flag);
-            Thread.sleep(3000);
-        }
+        membershipsPage.ClickBtnAddMembershipDetail();
+        membershipsPage.AddMembership(prop.getProperty("valueMembership"));
+        membershipsPage.AddSubscriptionPaidBy(prop.getProperty("valueSubscriptionPaidBy"));
+        membershipsPage.AddSubscriptionAmount(prop.getProperty("valueSubscriptionAmount"));
+        membershipsPage.AddMembershipCurrency(prop.getProperty("valueMembershipCurrency"));
+        membershipsPage.AddSubscriptionCommenceDate(prop.getProperty("valueSubscriptionCommenceDate"));
+        membershipsPage.AddSubscriptionRenewalDate(prop.getProperty("valueSubscriptionRenewalDate"));
+        membershipsPage.ClickOnBtnSaveMembership();
+        boolean flag = membershipsPage.IsMembershipsAdded();
+        Assert.assertTrue(flag);
+        Thread.sleep(3000);
+
     }
 
     @Test(priority = 2)
+    public void verifyDeleteMembershipDetails() throws InterruptedException {
+        membershipsPage.DeleteMembershipDetails();
+        Boolean flag = membershipsPage.IsMembershipDetailsDeleted();
+        Assert.assertTrue(flag);
+        Thread.sleep(3000);
+    }
+
+    @Test(priority = 3)
     public void verifyUploadMembershipAttach(){
         membershipsPage.uploadMembershipAttach();
         Boolean flag = membershipsPage.IsMembershipAttachUploaded();
