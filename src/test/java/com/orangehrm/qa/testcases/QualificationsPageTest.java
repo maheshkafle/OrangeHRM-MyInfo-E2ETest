@@ -137,6 +137,14 @@ public class QualificationsPageTest extends TestBase {
     }
 
     @Test(priority = 10)
+    public void verifyDeleteLicense() throws InterruptedException {
+        qualificationsPage.DeleteLicense();
+        Boolean flag = qualificationsPage.IsLicenseDeleted();
+        Assert.assertTrue(flag);
+        Thread.sleep(3000);
+    }
+
+    @Test(priority = 11)
     public void verifyUploadQualificationAttach(){
         qualificationsPage.uploadQualificationAttach();
         Boolean flag = qualificationsPage.isQualificationAttachUploaded();
