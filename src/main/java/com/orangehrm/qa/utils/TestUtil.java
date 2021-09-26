@@ -23,7 +23,7 @@ public class TestUtil extends TestBase {
     public static void selectDropdownValue( WebElement locator, String value) throws InterruptedException {
         Select dropdown_option = new Select(locator);
         dropdown_option.selectByValue(value);
-        Thread.sleep(3000);
+        Thread.sleep(1000);
     }
 
     public static boolean checkStatus(WebElement locator){
