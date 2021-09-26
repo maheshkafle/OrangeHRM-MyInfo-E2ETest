@@ -5,7 +5,6 @@ import com.orangehrm.qa.pages.DashboardPage;
 import com.orangehrm.qa.pages.LoginPage;
 import com.orangehrm.qa.pages.PersonalDetailsPage;
 import com.orangehrm.qa.pages.QualificationsPage;
-import com.orangehrm.qa.utils.TestUtil;
 import org.openqa.selenium.JavascriptExecutor;
 import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
@@ -53,12 +52,10 @@ public class QualificationsPageTest extends TestBase {
 
     @Test(priority = 2)
     public void verifyDeleteWorkExperience() throws InterruptedException {
-        for(int i=0; i<2; i++){
-            qualificationsPage.deleteWorkExperience();
-            Boolean flag = qualificationsPage.isWorkExperienceDeleted();
-            Assert.assertTrue(flag);
-            Thread.sleep(3000);
-        }
+        qualificationsPage.deleteWorkExperience();
+        Boolean flag = qualificationsPage.isWorkExperienceDeleted();
+        Assert.assertTrue(flag);
+        Thread.sleep(3000);
     }
 
     @Test(priority = 3)
@@ -90,6 +87,14 @@ public class QualificationsPageTest extends TestBase {
     }
 
     @Test(priority = 5)
+    public void verifyDeleteSkills() throws InterruptedException {
+        qualificationsPage.DeleteSkills();
+        Boolean flag = qualificationsPage.IsSkillsDeleted();
+        Assert.assertTrue(flag);
+        Thread.sleep(3000);
+    }
+
+    @Test(priority = 6)
     public void verifyAddLanguages() throws InterruptedException {
         qualificationsPage.clickAddLanguageBtn();
         qualificationsPage.selectLanguage(prop.getProperty("valueLanguage"));
@@ -102,7 +107,7 @@ public class QualificationsPageTest extends TestBase {
         Thread.sleep(3000);
     }
 
-    @Test(priority = 6)
+    @Test(priority = 7)
     public void verifyAddLicense() throws InterruptedException {
         qualificationsPage.ClickBtnAddLicense();
         qualificationsPage.AddLicenseType(prop.getProperty("valueLicenseType"));
@@ -115,7 +120,7 @@ public class QualificationsPageTest extends TestBase {
         Thread.sleep(3000);
     }
 
-    @Test(priority = 7)
+    @Test(priority = 8)
     public void verifyUploadQualificationAttach(){
         qualificationsPage.uploadQualificationAttach();
         Boolean flag = qualificationsPage.isQualificationAttachUploaded();
