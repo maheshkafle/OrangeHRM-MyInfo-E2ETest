@@ -88,6 +88,13 @@ public class QualificationsPage extends TestBase {
     @FindBy(id = "btnSkillSave")
     WebElement BtnSkillSave;
 
+    //Hard coded xpath which contains text shi:dolutions: So pass accordingly
+    @FindBy(xpath = "//a[contains(text(), 'Java')]/parent::td//preceding-sibling::td//input[@class='chkbox']")
+    WebElement SkillsCheckbox;
+
+    @FindBy(id = "delSkill")
+    WebElement BtnDelSkill;
+
     @FindBy(id = "language_code")
     WebElement Language;
 
@@ -240,6 +247,16 @@ public class QualificationsPage extends TestBase {
 
     public boolean isSkillAdded(){
         System.out.println(CheckStatusDiv.getText());
+        Boolean flag = TestUtil.checkStatus(CheckStatusDiv);
+        return flag;
+    }
+
+    public void DeleteSkills() {
+        TestUtil.doClick(SkillsCheckbox);
+        TestUtil.doClick(BtnDelSkill);
+    }
+
+    public boolean IsSkillsDeleted() {
         Boolean flag = TestUtil.checkStatus(CheckStatusDiv);
         return flag;
     }
