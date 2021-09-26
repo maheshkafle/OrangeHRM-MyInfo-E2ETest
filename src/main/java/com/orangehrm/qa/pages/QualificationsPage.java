@@ -139,6 +139,13 @@ public class QualificationsPage extends TestBase {
     @FindBy(id = "btnLicenseSave")
     WebElement BtnLicenseSave;
 
+    //Hard coded xpath which contains text PMI Agile Certified Practitioner (PMI-ACP): So pass accordingly
+    @FindBy(xpath = "//a[contains(text(), \"PMI Agile Certified Practitioner (PMI-ACP)\")]/parent::td//preceding-sibling::td//input[@class='chkbox']")
+    WebElement LicenseCheckbox;
+
+    @FindBy(id = "delLicense")
+    WebElement BtnDelLicense;
+
     @FindBy(id = "btnAddAttachment")
     WebElement BtnAddAttachment;
 
@@ -351,6 +358,16 @@ public class QualificationsPage extends TestBase {
 
     public boolean IsLicenseAdded(){
         System.out.println(CheckStatusDiv.getText());
+        Boolean flag = TestUtil.checkStatus(CheckStatusDiv);
+        return flag;
+    }
+
+    public void DeleteLicense() {
+        TestUtil.doClick(LicenseCheckbox);
+        TestUtil.doClick(BtnDelLicense);
+    }
+
+    public boolean IsLicenseDeleted() {
         Boolean flag = TestUtil.checkStatus(CheckStatusDiv);
         return flag;
     }
