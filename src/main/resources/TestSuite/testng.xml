@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="OrangeHRM Test Suite">
+    <test name="OrangeHRM My Info Regression Test">
+        <classes>
+            <class name="com.orangehrm.qa.testcases.LoginPageTest"></class>
+            <class name="com.orangehrm.qa.testcases.DashboardPageTest"></class>
+            <class name="com.orangehrm.qa.testcases.PersonalDetailsPageTest"></class>
+            <class name="com.orangehrm.qa.testcases.ContactDetailsPageTest"></class>
+            <class name="com.orangehrm.qa.testcases.EmergencyContactsPageTest"></class>
+            <class name="com.orangehrm.qa.testcases.DependentsPageTest"></class>
+            <class name="com.orangehrm.qa.testcases.ImmigrationPageTest"></class>
+            <class name="com.orangehrm.qa.testcases.JobPageTest"></class>
+            <class name="com.orangehrm.qa.testcases.SalaryPageTest"></class>
+            <class name="com.orangehrm.qa.testcases.QualificationsPageTest"></class>
+            <class name="com.orangehrm.qa.testcases.MembershipsPageTest"></class>
+        </classes>
+    </test>
+</suite>
