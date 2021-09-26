@@ -151,6 +151,14 @@ public class QualificationsPageTest extends TestBase {
         Assert.assertTrue(flag);
     }
 
+    @Test(priority = 12)
+    public void verifyDeleteQualificationAttachment() throws InterruptedException {
+        qualificationsPage.DeleteQualificationAttachment();
+        Boolean flag = qualificationsPage.IsQualificationAttachmentDeleted();
+        Assert.assertTrue(flag);
+        Thread.sleep(3000);
+
+    }
     @AfterMethod
     public void tearDown(){
         driver.quit();
