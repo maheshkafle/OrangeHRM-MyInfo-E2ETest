@@ -76,6 +76,13 @@ public class QualificationsPage extends TestBase {
     @FindBy(id = "btnEducationSave")
     WebElement BtnEducationSave;
 
+    //Hard coded xpath which contains text shi:dolutions: So pass accordingly
+    @FindBy(xpath = "//a[contains(text(), \"Bachelor's Degree\")]/parent::td//preceding-sibling::td//input[@class='chkbox']")
+    WebElement EducationCheckbox;
+
+    @FindBy(id = "delEducation")
+    WebElement BtnDelEducation;
+
     @FindBy(id = "skill_code")
     WebElement Skill;
 
@@ -221,6 +228,16 @@ public class QualificationsPage extends TestBase {
 
     public boolean isEducationAdded(){
         System.out.println(CheckStatusDiv.getText());
+        Boolean flag = TestUtil.checkStatus(CheckStatusDiv);
+        return flag;
+    }
+
+    public void DeleteEducation() {
+        TestUtil.doClick(EducationCheckbox);
+        TestUtil.doClick(BtnDelEducation);
+    }
+
+    public boolean IsEducationDeleted() {
         Boolean flag = TestUtil.checkStatus(CheckStatusDiv);
         return flag;
     }
