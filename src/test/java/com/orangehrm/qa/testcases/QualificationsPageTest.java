@@ -101,6 +101,19 @@ public class QualificationsPageTest extends TestBase {
         Thread.sleep(3000);
     }
 
+    @Test(priority = 6)
+    public void verifyAddLicense() throws InterruptedException {
+        qualificationsPage.ClickBtnAddLicense();
+        qualificationsPage.AddLicenseType(prop.getProperty("valueLicenseType"));
+        qualificationsPage.AddLicenseNumber(prop.getProperty("valueLicenseNumber"));
+        qualificationsPage.AddLicenseIssueDate(prop.getProperty("valueLicenseIssueDate"));
+        qualificationsPage.AddLicenseRenewalDate(prop.getProperty("valueLicenseRenewalDate"));
+        qualificationsPage.ClickBtnLicenseSave();
+        Boolean flag = qualificationsPage.IsLicenseAdded();
+        Assert.assertTrue(flag);
+        Thread.sleep(3000);
+    }
+
     @AfterMethod
     public void tearDown(){
         driver.quit();

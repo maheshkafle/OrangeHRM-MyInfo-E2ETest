@@ -24,6 +24,9 @@ public class QualificationsPage extends TestBase {
     @FindBy(id = "addLanguage")
     WebElement BtnAddLanguage;
 
+    @FindBy(id = "addLicense")
+    WebElement BtnAddLicense;
+
     @FindBy(id = "experience_employer")
     WebElement Company;
 
@@ -99,6 +102,21 @@ public class QualificationsPage extends TestBase {
 
     @FindBy(id = "btnLanguageSave")
     WebElement BtnLanguageSave;
+
+    @FindBy(id = "license_code")
+    WebElement LicenseType;
+
+    @FindBy(id = "license_license_no")
+    WebElement LicenseNum;
+
+    @FindBy(id = "license_date")
+    WebElement LicenseIssueDate;
+
+    @FindBy(id = "license_renewal_date")
+    WebElement LicenseRenewalDate;
+
+    @FindBy(id = "btnLicenseSave")
+    WebElement BtnLicenseSave;
 
     // Initializing Page Objects using constructor
     public QualificationsPage(){
@@ -247,4 +265,33 @@ public class QualificationsPage extends TestBase {
         return flag;
     }
 
+    public void ClickBtnAddLicense(){
+        TestUtil.doClick(BtnAddLicense);
+    }
+
+    public void AddLicenseType(String valueLicenseType) throws InterruptedException {
+        TestUtil.selectDropdownValue(LicenseType, valueLicenseType);
+    }
+
+    public void AddLicenseNumber(String valueLicenseNumber){
+        TestUtil.doSendKeys(LicenseNum, valueLicenseNumber);
+    }
+
+    public void AddLicenseIssueDate(String valueLicenseIssueDate) throws InterruptedException {
+        TestUtil.SelectDateFromCalenderCustom(driver, LicenseIssueDate, valueLicenseIssueDate);
+    }
+
+    public void AddLicenseRenewalDate(String valueLicenseRenewalDate) throws InterruptedException {
+        TestUtil.SelectDateFromCalenderCustom(driver, LicenseRenewalDate, valueLicenseRenewalDate);
+    }
+
+    public void ClickBtnLicenseSave(){
+        TestUtil.doClick(BtnLicenseSave);
+    }
+
+    public boolean IsLicenseAdded(){
+        System.out.println(CheckStatusDiv.getText());
+        Boolean flag = TestUtil.checkStatus(CheckStatusDiv);
+        return flag;
+    }
 }
