@@ -35,6 +35,15 @@ public class MembershipsPage extends TestBase {
     @FindBy(className = "message")
     WebElement CheckStatusDiv;
 
+    @FindBy(id = "btnAddAttachment")
+    WebElement BtnAddAttachment;
+
+    @FindBy(id = "ufile")
+    WebElement BtnUpload;
+
+    @FindBy(id = "btnSaveAttachment")
+    WebElement BtnSaveAttachment;
+
     // Initializing Page Objects using constructor
     public MembershipsPage(){
         PageFactory.initElements(driver, this);
@@ -78,4 +87,13 @@ public class MembershipsPage extends TestBase {
         return flag;
     }
 
+    public void uploadMembershipAttach(){
+        TestUtil.uploadAttachment(BtnAddAttachment, BtnUpload, BtnSaveAttachment, prop.getProperty("pathToMembershipAttachment"));
+    }
+
+    public boolean IsMembershipAttachUploaded(){
+        System.out.println(CheckStatusDiv.getText());
+        Boolean flag = TestUtil.checkStatus(CheckStatusDiv);
+        return flag;
+    }
 }

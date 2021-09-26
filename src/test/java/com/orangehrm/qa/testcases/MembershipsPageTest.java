@@ -55,6 +55,13 @@ public class MembershipsPageTest extends TestBase {
         }
     }
 
+    @Test(priority = 2)
+    public void verifyUploadMembershipAttach(){
+        membershipsPage.uploadMembershipAttach();
+        Boolean flag = membershipsPage.IsMembershipAttachUploaded();
+        Assert.assertTrue(flag);
+    }
+
     @AfterMethod
     public void tearDown(){
         driver.quit();
