@@ -76,7 +76,7 @@ public class QualificationsPage extends TestBase {
     @FindBy(id = "btnEducationSave")
     WebElement BtnEducationSave;
 
-    //Hard coded xpath which contains text shi:dolutions: So pass accordingly
+    //Hard coded xpath which contains text Bachelor's Degree: So pass accordingly
     @FindBy(xpath = "//a[contains(text(), \"Bachelor's Degree\")]/parent::td//preceding-sibling::td//input[@class='chkbox']")
     WebElement EducationCheckbox;
 
@@ -95,7 +95,7 @@ public class QualificationsPage extends TestBase {
     @FindBy(id = "btnSkillSave")
     WebElement BtnSkillSave;
 
-    //Hard coded xpath which contains text shi:dolutions: So pass accordingly
+    //Hard coded xpath which contains text Java: So pass accordingly
     @FindBy(xpath = "//a[contains(text(), 'Java')]/parent::td//preceding-sibling::td//input[@class='chkbox']")
     WebElement SkillsCheckbox;
 
@@ -116,6 +116,13 @@ public class QualificationsPage extends TestBase {
 
     @FindBy(id = "btnLanguageSave")
     WebElement BtnLanguageSave;
+
+    //Hard coded xpath which contains text English: So pass accordingly
+    @FindBy(xpath = "//a[contains(text(), 'English')]/parent::td//preceding-sibling::td//input[@class='chkbox']")
+    WebElement LanguageCheckbox;
+
+    @FindBy(id = "delLanguage")
+    WebElement BtnDelLanguage;
 
     @FindBy(id = "license_code")
     WebElement LicenseType;
@@ -304,6 +311,16 @@ public class QualificationsPage extends TestBase {
 
     public boolean isLanguageAdded(){
         System.out.println(CheckStatusDiv.getText());
+        Boolean flag = TestUtil.checkStatus(CheckStatusDiv);
+        return flag;
+    }
+
+    public void DeleteLanguages() {
+        TestUtil.doClick(LanguageCheckbox);
+        TestUtil.doClick(BtnDelLanguage);
+    }
+
+    public boolean IsLanguagesDeleted() {
         Boolean flag = TestUtil.checkStatus(CheckStatusDiv);
         return flag;
     }
