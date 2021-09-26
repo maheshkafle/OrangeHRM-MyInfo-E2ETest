@@ -155,6 +155,13 @@ public class QualificationsPage extends TestBase {
     @FindBy(id = "btnSaveAttachment")
     WebElement BtnSaveAttachment;
 
+    //Hard coded xpath which contains text jpg.jpg: So pass accordingly
+    @FindBy(xpath = "//a[contains(text(), \"jpg.jpg\")]/parent::td//preceding-sibling::td//input[@class='checkboxAtch']")
+    WebElement QualificationAttachCheckbox;
+
+    @FindBy(id = "btnDeleteAttachment")
+    WebElement BtnDeleteAttachment;
+
     // Initializing Page Objects using constructor
     public QualificationsPage(){
         PageFactory.initElements(driver, this);
@@ -381,4 +388,15 @@ public class QualificationsPage extends TestBase {
         Boolean flag = TestUtil.checkStatus(CheckStatusDiv);
         return flag;
     }
+
+    public void DeleteQualificationAttachment() {
+        TestUtil.doClick(QualificationAttachCheckbox);
+        TestUtil.doClick(BtnDeleteAttachment);
+    }
+
+    public boolean IsQualificationAttachmentDeleted() {
+        Boolean flag = TestUtil.checkStatus(CheckStatusDiv);
+        return flag;
+    }
+
 }
