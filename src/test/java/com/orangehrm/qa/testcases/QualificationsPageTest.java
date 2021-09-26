@@ -116,6 +116,14 @@ public class QualificationsPageTest extends TestBase {
     }
 
     @Test(priority = 8)
+    public void verifyDeleteLanguages() throws InterruptedException {
+        qualificationsPage.DeleteLanguages();
+        Boolean flag = qualificationsPage.IsLanguagesDeleted();
+        Assert.assertTrue(flag);
+        Thread.sleep(3000);
+    }
+
+    @Test(priority = 9)
     public void verifyAddLicense() throws InterruptedException {
         qualificationsPage.ClickBtnAddLicense();
         qualificationsPage.AddLicenseType(prop.getProperty("valueLicenseType"));
@@ -128,7 +136,7 @@ public class QualificationsPageTest extends TestBase {
         Thread.sleep(3000);
     }
 
-    @Test(priority = 9)
+    @Test(priority = 10)
     public void verifyUploadQualificationAttach(){
         qualificationsPage.uploadQualificationAttach();
         Boolean flag = qualificationsPage.isQualificationAttachUploaded();
