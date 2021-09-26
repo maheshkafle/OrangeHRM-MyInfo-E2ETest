@@ -118,6 +118,15 @@ public class QualificationsPage extends TestBase {
     @FindBy(id = "btnLicenseSave")
     WebElement BtnLicenseSave;
 
+    @FindBy(id = "btnAddAttachment")
+    WebElement BtnAddAttachment;
+
+    @FindBy(id = "ufile")
+    WebElement BtnUpload;
+
+    @FindBy(id = "btnSaveAttachment")
+    WebElement BtnSaveAttachment;
+
     // Initializing Page Objects using constructor
     public QualificationsPage(){
         PageFactory.initElements(driver, this);
@@ -290,6 +299,16 @@ public class QualificationsPage extends TestBase {
     }
 
     public boolean IsLicenseAdded(){
+        System.out.println(CheckStatusDiv.getText());
+        Boolean flag = TestUtil.checkStatus(CheckStatusDiv);
+        return flag;
+    }
+
+    public void uploadQualificationAttach(){
+        TestUtil.uploadAttachment(BtnAddAttachment, BtnUpload, BtnSaveAttachment, prop.getProperty("pathToQualificationAttachment"));
+    }
+
+    public boolean isQualificationAttachUploaded(){
         System.out.println(CheckStatusDiv.getText());
         Boolean flag = TestUtil.checkStatus(CheckStatusDiv);
         return flag;

@@ -5,6 +5,7 @@ import com.orangehrm.qa.pages.DashboardPage;
 import com.orangehrm.qa.pages.LoginPage;
 import com.orangehrm.qa.pages.PersonalDetailsPage;
 import com.orangehrm.qa.pages.QualificationsPage;
+import com.orangehrm.qa.utils.TestUtil;
 import org.openqa.selenium.JavascriptExecutor;
 import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
@@ -112,6 +113,13 @@ public class QualificationsPageTest extends TestBase {
         Boolean flag = qualificationsPage.IsLicenseAdded();
         Assert.assertTrue(flag);
         Thread.sleep(3000);
+    }
+
+    @Test(priority = 7)
+    public void verifyUploadQualificationAttach(){
+        qualificationsPage.uploadQualificationAttach();
+        Boolean flag = qualificationsPage.isQualificationAttachUploaded();
+        Assert.assertTrue(flag);
     }
 
     @AfterMethod
