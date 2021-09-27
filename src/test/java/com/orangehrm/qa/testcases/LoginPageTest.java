@@ -3,9 +3,11 @@ package com.orangehrm.qa.testcases;
 import com.orangehrm.qa.base.TestBase;
 import com.orangehrm.qa.pages.DashboardPage;
 import com.orangehrm.qa.pages.LoginPage;
+import com.orangehrm.qa.utils.TestUtil;
 import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
 public class LoginPageTest extends TestBase {
@@ -13,6 +15,8 @@ public class LoginPageTest extends TestBase {
     // Global Variables
     LoginPage loginPage;
     DashboardPage dashboardPage;
+
+    String sheetName = "credentials";
 
     public LoginPageTest(){
         // Call TestBase class constructor which initializes all properties
@@ -23,6 +27,12 @@ public class LoginPageTest extends TestBase {
     public void setUp(){
         initialization();
         loginPage = new LoginPage();
+    }
+
+    @DataProvider
+    public Object[][] getOrangeHRMLoginData(){
+        Object data[][] = TestUtil.getTestData(sheetName);
+        return data;
     }
 
     @Test(priority = 1)
@@ -39,9 +49,10 @@ public class LoginPageTest extends TestBase {
         Assert.assertTrue(flag);
     }
 
-    @Test(priority = 3)
-    public void loginTest() {
-        dashboardPage = loginPage.login(prop.getProperty("username"), prop.getProperty("password"));
+    @Test(priority = 3, dataProvider="getOrangeHRMLoginData")
+    public void loginTest(String username, String password) {
+        //dashboardPage = loginPage.login(prop.getProperty("username"), prop.getProperty("password"));
+        dashboardPage = loginPage.login(username, password);
     }
 
     @AfterMethod
