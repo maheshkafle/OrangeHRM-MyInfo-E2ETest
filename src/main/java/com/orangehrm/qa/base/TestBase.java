@@ -1,9 +1,11 @@
 package com.orangehrm.qa.base;
 
+import com.orangehrm.qa.utils.WebEventListener;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.support.events.EventFiringWebDriver;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -15,6 +17,9 @@ public class TestBase {
 
     public static WebDriver driver;
     public static Properties prop;
+
+    public static EventFiringWebDriver e_driver;
+    public static WebEventListener eventListener;
 
     public TestBase(){
         // Reads vars from config.properties file
@@ -43,6 +48,12 @@ public class TestBase {
             WebDriverManager.firefoxdriver().setup();
             driver = new FirefoxDriver();
         }
+
+        // Code to Add WebDriver Fire Event - This will generate proper logs for different selenium actions.
+        e_driver = new EventFiringWebDriver(driver);
+        eventListener = new WebEventListener();
+        e_driver.register(eventListener);
+        driver = e_driver;
 
         driver.manage().window().maximize();
         driver.manage().deleteAllCookies();

@@ -1,8 +1,13 @@
 package com.orangehrm.qa.utils;
 
 import com.orangehrm.qa.base.TestBase;
+import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.*;
 import org.openqa.selenium.support.ui.Select;
+
+import java.io.File;
+import java.io.IOException;
+
 public class TestUtil extends TestBase {
 
     public static void doSendKeys(WebElement locator, String text){
@@ -90,4 +95,13 @@ public class TestUtil extends TestBase {
             }
         }
     }
+
+    // Method to take screenshot if an exception occurs under screenshots folder and gets called from WebEventListener class
+    public static void takeScreenshotOnException() throws IOException {
+        File srcFile = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
+        String currentDir = System.getProperty("user.dir");
+
+        FileUtils.copyFile(srcFile, new File(currentDir + "/screenshots/" + System.currentTimeMillis() + ".png"));
+    }
+
 }
