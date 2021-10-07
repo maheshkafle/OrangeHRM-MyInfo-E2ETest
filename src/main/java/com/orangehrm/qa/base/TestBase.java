@@ -25,7 +25,7 @@ public class TestBase {
         // Reads vars from config.properties file
         try {
             prop = new Properties();
-            FileInputStream input = new FileInputStream("C:\\Users\\mahesh.kafle\\IdeaProjects\\OrangeHRM-MyInfo-E2ETest\\src\\main\\java\\com\\orangehrm\\qa\\config\\config.properties");
+            FileInputStream input = new FileInputStream("C:\\Projects\\OrangeHRM-MyInfo-E2ETest\\src\\main\\java\\com\\orangehrm\\qa\\config\\config.properties");
             prop.load(input);
         }
         catch (FileNotFoundException e){
