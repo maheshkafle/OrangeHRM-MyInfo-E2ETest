@@ -19,7 +19,7 @@ public class TestUtil extends TestBase {
     static Workbook book;
     static Sheet sheet;
 
-    public static String TESTDATA_SHEET_PATH = "C:\\Users\\mahesh.kafle\\IdeaProjects\\OrangeHRM-MyInfo-E2ETest\\src\\main\\java\\com\\orangehrm\\qa\\testdata\\credentials.xlsx";
+    public static String TESTDATA_SHEET_PATH = "C:\\Projects\\OrangeHRM-MyInfo-E2ETest\\src\\main\\java\\com\\orangehrm\\qa\\testdata\\credentials.xlsx";
 
     public static void doSendKeys(WebElement locator, String text){
         locator.clear();
